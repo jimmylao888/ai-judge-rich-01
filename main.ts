@@ -1,30 +1,44 @@
-// A working ai-judge-rich-01 entry (Node 22, standard library only): it writes one fixed plan, the plan an AI agent
-// would follow to turn $100, a computer with internet access and 30 days into the most money, to /output/entry.txt.
-// A starting point, not a winner: write a better plan. The gate takes UTF-8 text of 1 to 1,000 characters that is not
-// only white space, and the judge reads exactly the bytes written, line ends included, so write no line end you do
-// not mean to show. The program runs twice with no network, and both runs must write the same bytes.
-//
-// Start your agent's session at or after the contest opens and build the entry in it: a session begun before the
-// opening cannot be entered (the transcript gate's thinking_in_window).
-//
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
-//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
-//
-// python/main.py is the same entry in Python 3.13, writing the same bytes. Enter one of them: a repository with both
-// main.ts and main.py at its root is refused, so to enter the Python one, move python/main.py to the root in place of
-// this file.
+// ai-judge-rich-01 entry: writes one fixed plan to /output/entry.txt, nothing else.
+// The plan is the entry; this program only puts its exact bytes on disk the same way on every run.
 
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
-const PLAN = [
-  'Plan: sell spreadsheet cleanup as a fixed-price service.',
-  'Day 1: put up a one-page site offering to clean, merge and de-duplicate a spreadsheet for $25, paid in advance through a payment link.',
-  'Days 2-7: answer forum posts from people asking for help with messy spreadsheets, and send each one the first 50 rows done free as a sample.',
-  'Days 8-30: do every job with code within a day, ask each buyer for a review, and spend up to $60 on ads once ten jobs are done.',
-  'Keep $40 for hosting and fees, and drop any channel that brings no paying buyer within a week.',
-].join('\n');
+/**
+ * The plan, one line per element. The lines are joined with "\n" and written with no
+ * trailing line end, so the bytes on disk are exactly this text.
+ */
+const PLAN_LINES: readonly string[] = [
+  'Plan: sell rebuilt ad landing pages to local businesses already paying for clicks.',
+  "Day 1: $12 domain and inbox. Every night pull 50 advertisers from Meta's Ad Library (roofers, dentists, lawyers in Austin, Denver, Tampa), open each ad's page, time it free with PageSpeed, keep the 40 worst. Rebuild those 40 from one template with their offer, photos and phone: 1s load, call and form above the fold.",
+  'Each morning email those 40 at the address on their site, subject "your ad, rebuilt"; Stripe link on reply. First line is their number: "Your ad lands on a page that takes 8.4s; mine loads in 1.1s with your phone on it, live here. $499 and you point your ad at it; one booked job pays for it 10 times."',
+  'Math: 1,120 emails, 4% reply, 25% close = 11 sales, $5,489, plus $199 second pages. Floor: 3 sales = $1,497. Costs $50. No calls, no account access; the page is built before I ask.',
+  'Edge: I audit hundreds and build before asking; an agency quotes $2,500 and takes three weeks.',
+];
 
-writeFileSync(join(OUTPUT_DIR, 'entry.txt'), PLAN);
+/** The gate takes 1 to 1,000 code points that are not only white space: fail here, not on the server. */
+function renderPlan(lines: readonly string[]): string {
+  const text = lines.join('\n');
+  const points = [...text].length;
+  if (points < 1 || points > 1000) {
+    throw new RangeError(`plan is ${points} code points; the gate takes 1 to 1000`);
+  }
+  if (/^\s*$/.test(text)) {
+    throw new TypeError('plan is only white space');
+  }
+  if (text.includes('\r')) {
+    throw new TypeError('plan holds a carriage return; line ends are \\n only');
+  }
+  if (text.endsWith('\n')) {
+    throw new TypeError('plan ends with a line end, which the judge would read');
+  }
+  return text;
+}
+
+// Bytes, not a string: the file holds the plan's UTF-8 and nothing else, on every platform.
+const target = join(OUTPUT_DIR, 'entry.txt');
+const bytes = Buffer.from(renderPlan(PLAN_LINES), 'utf8');
+mkdirSync(OUTPUT_DIR, { recursive: true });
+writeFileSync(target, bytes);
