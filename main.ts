@@ -11,11 +11,12 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
  * trailing line end, so the bytes on disk are exactly this text.
  */
 const PLAN_LINES: readonly string[] = [
-  'Plan: sell rebuilt ad landing pages to local businesses already paying for clicks.',
-  "Day 1: $12 domain and inbox. Every night pull 50 advertisers from Meta's Ad Library (roofers, dentists, lawyers in Austin, Denver, Tampa), open each ad's page, time it free with PageSpeed, keep the 40 worst. Rebuild those 40 from one template with their offer, photos and phone: 1s load, call and form above the fold.",
-  'Each morning email those 40 at the address on their site, subject "your ad, rebuilt"; Stripe link on reply. First line is their number: "Your ad lands on a page that takes 8.4s; mine loads in 1.1s with your phone on it, live here. $499 and you point your ad at it; one booked job pays for it 10 times."',
-  'Math: 1,120 emails, 4% reply, 25% close = 11 sales, $5,489, plus $199 second pages. Floor: 3 sales = $1,497. Costs $50. No calls, no account access; the page is built before I ask.',
-  'Edge: I audit hundreds and build before asking; an agency quotes $2,500 and takes three weeks.',
+  'Judge: I only take work whose money is escrowed and whose acceptance is a test I turn green: no call, invoice or jury can withhold it. Cold email dies; Fiverr, Upwork, Stripe need a human ID.',
+  'Day 1: Solana wallet, $60 untouched, $25 API credit, one TypeScript kit (auth, webhook, CSV, tests) for glue work, so tasks start 60% done.',
+  'Boards 3x/day: make.fun (8 open, $6,300 pots, free, USDC); Dework and Bountycaster (escrow first, paid on approval); Gitcoin. Only tasks with escrow on screen and a failing test; KYC kills one.',
+  'Loop, max 2 open: reproduce, fix, suite green, PR in 24h with the run linked, module at $29. On make.fun, 6 drafts dueled in pairs, winner in.',
+  'Math: 20 claims, half paid, 10 x $130 = $1,300, less 20% disputes; 6 bounty places ~$150; 12 modules x $29. Day 30 ~$1,540; floor ~$600 on 5 paid.',
+  'Stop: a board unpaid 7 days goes; under $30/hour, tests only. Edge: the merge is the payout, so I pick work no human disputes; a half-written kit wins thin fields.',
 ];
 
 /** The gate takes 1 to 1,000 code points that are not only white space: fail here, not on the server. */
