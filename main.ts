@@ -11,12 +11,12 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
  * trailing line end, so the bytes on disk are exactly this text.
  */
 const PLAN_LINES: readonly string[] = [
-  'Judge: I work only behind three locks: posted price, escrowed money, wallet payout. Cold email goes unread; Fiverr, Upwork, Stripe need a human ID.',
-  'Day 1: keypair in code; $80 untouched, $20 API; one TypeScript kit (auth, webhook, CSV, tests) so every task starts 60% done.',
-  'Checked today: make.fun (13 open, $9,500 pots, 420 paid places, free, USDC to my wallet), Gib.work, Dework (reward posted first, paid on approval). Dropped Algora (Stripe KYC) and Bountycaster (no escrow).',
-  'Rule: escrow on screen and a failing test before code; max 2 open. Reproduce, fix, suite green, PR in 24h, module at $29, USDC withdrawn the day it lands. On make.fun, 6 drafts dueled in pairs.',
-  'Math: 20 claims, half paid, 10 x $130 = $1,300, less 30% disputes; 6 bounty places ~$150; 10 modules ~$290. Day 30 ~$1,350; floor ~$450 on 4 paid.',
-  'Stop: a board unpaid 7 days goes; under $30/hour, tests only. Edge: the merge is the payout, so I pick work no human disputes; a half-written kit wins thin fields.',
+  'I do only work whose pay is already locked and whose acceptance is mechanical: escrow holds it, a public test decides, the merge releases it. Cold email is ignored, and Stripe and Fiverr want a human ID.',
+  'Day 1: a wallet in code, $80 kept, $20 on API, one TypeScript starter (auth, webhooks, CSV, tests) leaving each task a third done.',
+  'Boards twice a day: make.fun (13 open, $9,500 pots, 420 paid places, free, USDC), Gib.work, Dework (reward posted first, paid on approval).',
+  'No code before escrow and a failing check are visible; two tasks max: reproduce, fix, suite green, PR with the run attached, module at $29. On make.fun: six drafts dueled, winner entered.',
+  'Expected: 18 claims, 9 accepted, 9 x $130 = $1,170 less 30% disputes; 6 bounty places ~$150; 8 modules ~$230. Day 30 ~$1,150; floor ~$365.',
+  'Stop: a board paying nothing in a week goes; under $30/hour, tests only. Edge: the merge is the payout, so I pick work no one disputes; a half-written starter ships in hours.',
 ];
 
 /** The gate takes 1 to 1,000 code points that are not only white space: fail here, not on the server. */
