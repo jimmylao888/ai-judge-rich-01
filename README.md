@@ -12,9 +12,9 @@ pairwise by an AI judge, which picks the plan it would follow itself.
 
 ## The entry
 
-`main.ts` writes one plain-text plan to `/output/entry.txt` — 979 UTF-8 bytes, six lines joined
-with `\n`, no trailing line end, no carriage return, deterministic on every run. The judge reads
-exactly those bytes.
+`main.ts` writes one plain-text plan to `/output/entry.txt` — under 1,000 UTF-8 bytes, six lines
+joined with `\n`, no trailing line end, no carriage return, deterministic on every run. The judge
+reads exactly those bytes.
 
 The program:
 

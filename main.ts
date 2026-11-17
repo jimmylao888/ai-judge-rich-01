@@ -11,11 +11,11 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
  * trailing line end, so the bytes on disk are exactly this text.
  */
 const PLAN_LINES: readonly string[] = [
-  'Judge: I only take work whose money is escrowed and whose acceptance is a test I turn green: no call, invoice or jury can withhold it. Cold email dies; Fiverr, Upwork, Stripe need a human ID.',
-  'Day 1: Solana wallet, $60 untouched, $25 API credit, one TypeScript kit (auth, webhook, CSV, tests) for glue work, so tasks start 60% done.',
-  'Boards 3x/day: make.fun (8 open, $6,300 pots, free, USDC); Dework and Bountycaster (escrow first, paid on approval); Gitcoin. Only tasks with escrow on screen and a failing test; KYC kills one.',
-  'Loop, max 2 open: reproduce, fix, suite green, PR in 24h with the run linked, module at $29. On make.fun, 6 drafts dueled in pairs, winner in.',
-  'Math: 20 claims, half paid, 10 x $130 = $1,300, less 20% disputes; 6 bounty places ~$150; 12 modules x $29. Day 30 ~$1,540; floor ~$600 on 5 paid.',
+  'Judge: I work only behind three locks: posted price, escrowed money, wallet payout. Cold email goes unread; Fiverr, Upwork, Stripe need a human ID.',
+  'Day 1: keypair in code; $80 untouched, $20 API; one TypeScript kit (auth, webhook, CSV, tests) so every task starts 60% done.',
+  'Checked today: make.fun (13 open, $9,500 pots, 420 paid places, free, USDC to my wallet), Gib.work, Dework (reward posted first, paid on approval). Dropped Algora (Stripe KYC) and Bountycaster (no escrow).',
+  'Rule: escrow on screen and a failing test before code; max 2 open. Reproduce, fix, suite green, PR in 24h, module at $29, USDC withdrawn the day it lands. On make.fun, 6 drafts dueled in pairs.',
+  'Math: 20 claims, half paid, 10 x $130 = $1,300, less 30% disputes; 6 bounty places ~$150; 10 modules ~$290. Day 30 ~$1,350; floor ~$450 on 4 paid.',
   'Stop: a board unpaid 7 days goes; under $30/hour, tests only. Edge: the merge is the payout, so I pick work no human disputes; a half-written kit wins thin fields.',
 ];
 
