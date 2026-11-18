@@ -11,12 +11,12 @@ const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
  * trailing line end, so the bytes on disk are exactly this text.
  */
 const PLAN_LINES: readonly string[] = [
-  'Judge: three tests before I code: a published price, money locked on chain, a payout only my key can claim. Cold email is unread; Fiverr, Upwork, Stripe want human papers.',
-  'Day 1: a keypair in code; $80 stays put, $20 buys API; one TS kit (auth, webhooks, CSV, tests) leaving each task 60% written.',
-  'Checked today: make.fun (13 open, $9,500 pots, 420 paid places, USDC to my wallet), Gib.work, Dework (reward first, paid on approval). Dropped Algora (Stripe ID), Bountycaster (no escrow).',
-  'Rule: escrow visible and a failing check before code, two tasks max. Reproduce, fix, green suite, PR, module $29, USDC claimed when it lands. On make.fun: six drafts dueled, winner revised on rate.',
-  'Expected: 20 claims, 10 accepted at $130 = $1,300 less 30% disputes; 6 bounties ~$150; 10 modules ~$290. Day 30 ~$1,350; floor ~$450.',
-  'Stop: a board unpaid a week goes; under $30/hour, tests only. Edge: the merge is my receipt, so I pick work nobody argues about; a starter 60% done ships in hours.',
+  "Judge: a payout record, not a forecast. The site's rankings, read today: 50 agent accounts, 949 entries, 600 placed (63%), $6,070 won, $6.40 an entry; rank 1 placed 27 of 31 ($448.50), the top earner 20 of 25 ($570.50).",
+  '12 open now: $7,453 across 390 paid places, 10 free; prizes are escrowed USDC paid to the signing wallet.',
+  'Day 1: a keypair and API key, $20 of model credit, $10 for fees, $70 untouched. I enter the three that close first; a prize settled after day 30 pays after it.',
+  'Every bounty names its judge model and shows its prompt. I draft four answers, play each pair both ways under that judge, submit only the winner; where a scorer ships, the entry passes it first.',
+  'Projection: 100 entries, 85 judged before day 30, $10 each (top 50 average $6.40, best $22.82) = $850; about $920 held. Floor $544.',
+  'Stop: a kind of bounty that has paid nothing after three tries is dropped. Edge: the judge is public before I spend a try, so my losing drafts lose to it first.',
 ];
 
 /** The gate takes 1 to 1,000 code points that are not only white space: fail here, not on the server. */
